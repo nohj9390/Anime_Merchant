@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anime Merchant - Your Premium Anime Collectibles</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Passion+One:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #FF1744;
+            --secondary: #00E5FF;
+            --dark: #0A0E27;
+            --darker: #050714;
+            --light: #F5F5F5;
+            --accent: #FFD600;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--darker);
+            color: var(--light);
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 14, 39, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1.5rem 0;
+            border-bottom: 2px solid var(--primary);
+        }
+
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-family: 'Passion One', cursive;
+            font-size: 2rem;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 20px rgba(255, 23, 68, 0.5);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        nav a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--secondary);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Sections */
+        section {
+            min-height: 100vh;
+            padding: 8rem 2rem 4rem;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Hero Section */
+        #home {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--darker) 0%, var(--dark) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        #home::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(255, 23, 68, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(0, 229, 255, 0.1) 0%, transparent 50%);
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 1;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-content h1 {
+            font-family: 'Passion One', cursive;
+            font-size: 6rem;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 40px rgba(255, 23, 68, 0.6);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 20px rgba(255, 23, 68, 0.4);
+            }
+            to {
+                text-shadow: 0 0 40px rgba(255, 23, 68, 0.8), 0 0 60px rgba(255, 23, 68, 0.4);
+            }
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            color: var(--secondary);
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 3rem;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border: 2px solid var(--primary);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--secondary);
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+
+        .cta-button:hover {
+            border-color: var(--secondary);
+        }
+
+        .cta-button:hover::before {
+            left: 0;
+        }
+
+        /* About Section */
+        #about {
+            background: var(--dark);
+            position: relative;
+        }
+
+        #about::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--secondary), transparent);
+        }
+
+        .section-title {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 4rem;
+            color: var(--primary);
+            text-align: center;
+            margin-bottom: 3rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: var(--secondary);
+            margin: 1rem auto;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 2rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+        }
+
+        .about-text p {
+            line-height: 1.8;
+            color: rgba(245, 245, 245, 0.8);
+            margin-bottom: 1.5rem;
+        }
+
+        .about-features {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .feature {
+            background: rgba(255, 23, 68, 0.1);
+            padding: 1.5rem;
+            border-left: 4px solid var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .feature:hover {
+            background: rgba(255, 23, 68, 0.2);
+            transform: translateX(10px);
+        }
+
+        .feature h4 {
+            color: var(--accent);
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Merchandise Section */
+        #merchandise {
+            background: linear-gradient(135deg, var(--darker) 0%, var(--dark) 100%);
+        }
+
+        .merch-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .merch-card {
+            background: rgba(10, 14, 39, 0.6);
+            border: 2px solid rgba(0, 229, 255, 0.3);
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .merch-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0, 229, 255, 0.1) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .merch-card:hover::before {
+            opacity: 1;
+        }
+
+        .merch-card:hover {
+            border-color: var(--secondary);
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 229, 255, 0.3);
+        }
+
+        .merch-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .merch-card h3 {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 1.8rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+        }
+
+        .merch-card p {
+            color: rgba(245, 245, 245, 0.7);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .price {
+            font-size: 1.5rem;
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        /* Contact Section */
+        #contact {
+            background: var(--dark);
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-top: 3rem;
+        }
+
+        .contact-info h3 {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 2rem;
+            color: var(--secondary);
+            margin-bottom: 2rem;
+            letter-spacing: 2px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: rgba(255, 23, 68, 0.1);
+            border-left: 4px solid var(--primary);
+        }
+
+        .contact-item i {
+            font-size: 1.5rem;
+            color: var(--secondary);
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group label {
+            color: var(--secondary);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            padding: 1rem;
+            background: rgba(10, 14, 39, 0.6);
+            border: 2px solid rgba(0, 229, 255, 0.3);
+            color: var(--light);
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 20px rgba(0, 229, 255, 0.2);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .submit-btn {
+            padding: 1rem 2rem;
+            background: var(--primary);
+            color: white;
+            border: 2px solid var(--primary);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background: transparent;
+            border-color: var(--secondary);
+            color: var(--secondary);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--darker);
+            padding: 2rem;
+            text-align: center;
+            border-top: 2px solid var(--primary);
+        }
+
+        footer p {
+            color: rgba(245, 245, 245, 0.6);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 1rem;
+            }
+
+            nav a {
+                font-size: 0.8rem;
+            }
+
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+
+            .hero-content p {
+                font-size: 1.2rem;
+            }
+
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .section-title {
+                font-size: 3rem;
+            }
+
+            .logo {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav .container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">Anime Merchant</div>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#merchandise">Merchandise</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home">
+        <div class="hero-content">
+            <h1>Anime Merchant</h1>
+            <p>Your Ultimate Destination for Premium Anime Collectibles</p>
+            <a href="#merchandise" class="cta-button">Explore Collection</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">About Us</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Welcome to Anime Merchant</h3>
+                    <p>We are passionate anime enthusiasts dedicated to bringing you the finest collection of authentic anime merchandise from Japan and around the world. Since our establishment, we've been committed to providing fans with high-quality collectibles, figures, apparel, and exclusive items.</p>
+                    <p>Our mission is to connect fans with their favorite anime series through carefully curated merchandise that celebrates the artistry and storytelling of Japanese animation.</p>
+                </div>
+                <div class="about-features">
+                    <div class="feature">
+                        <h4>🎯 Authentic Products</h4>
+                        <p>100% genuine merchandise sourced directly from official manufacturers</p>
+                    </div>
+                    <div class="feature">
+                        <h4>🚀 Fast Shipping</h4>
+                        <p>Quick and reliable delivery to anime fans worldwide</p>
+                    </div>
+                    <div class="feature">
+                        <h4>💎 Exclusive Items</h4>
+                        <p>Limited edition collectibles and rare finds you won't get anywhere else</p>
+                    </div>
+                    <div class="feature">
+                        <h4>🛡️ Secure Shopping</h4>
+                        <p>Safe transactions and customer data protection guaranteed</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Merchandise Section -->
+    <section id="merchandise">
+        <div class="container">
+            <h2 class="section-title">Our Merchandise</h2>
+            <div class="merch-grid">
+                <div class="merch-card">
+                    <div class="merch-icon">🎭</div>
+                    <h3>Action Figures</h3>
+                    <p>Premium quality action figures from your favorite anime series. Highly detailed and poseable collectibles.</p>
+                    <div class="price">From $29.99</div>
+                </div>
+                <div class="merch-card">
+                    <div class="merch-icon">👕</div>
+                    <h3>Apparel</h3>
+                    <p>Stylish t-shirts, hoodies, and accessories featuring iconic anime artwork and characters.</p>
+                    <div class="price">From $24.99</div>
+                </div>
+                <div class="merch-card">
+                    <div class="merch-icon">📚</div>
+                    <h3>Manga & Books</h3>
+                    <p>Latest manga volumes, art books, and exclusive light novels from popular series.</p>
+                    <div class="price">From $12.99</div>
+                </div>
+                <div class="merch-card">
+                    <div class="merch-icon">🎨</div>
+                    <h3>Posters & Art</h3>
+                    <p>High-quality posters, canvas prints, and wall scrolls to decorate your space.</p>
+                    <div class="price">From $15.99</div>
+                </div>
+                <div class="merch-card">
+                    <div class="merch-icon">🎮</div>
+                    <h3>Gaming Goods</h3>
+                    <p>Anime-themed gaming accessories, controllers, and collector's edition games.</p>
+                    <div class="price">From $34.99</div>
+                </div>
+                <div class="merch-card">
+                    <div class="merch-icon">✨</div>
+                    <h3>Limited Editions</h3>
+                    <p>Exclusive limited run items and special collaboration merchandise.</p>
+                    <div class="price">From $49.99</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Get in Touch</h3>
+                    <div class="contact-item">
+                        <i>📧</i>
+                        <div>
+                            <strong>Email</strong><br>
+                            support@animemerchant.com
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i>📱</i>
+                        <div>
+                            <strong>Phone</strong><br>
+                            +1 (555) 123-4567
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i>📍</i>
+                        <div>
+                            <strong>Address</strong><br>
+                            123 Anime Street, Tokyo District<br>
+                            Los Angeles, CA 90001
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i>🕒</i>
+                        <div>
+                            <strong>Business Hours</strong><br>
+                            Mon-Fri: 9AM - 6PM PST<br>
+                            Sat-Sun: 10AM - 4PM PST
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <h3 style="font-family: 'Bebas Neue', cursive; font-size: 2rem; color: var(--secondary); margin-bottom: 1rem; letter-spacing: 2px;">Send us a Message</h3>
+                    <form>
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input type="text" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" placeholder="your.email@example.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Subject</label>
+                            <input type="text" placeholder="How can we help?" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Message</label>
+                            <textarea placeholder="Your message here..." required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Anime Merchant. All rights reserved. Made with ❤️ for anime fans worldwide.</p>
+    </footer>
+
+    <script>
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Active nav link on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('nav a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.style.color = '';
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.style.color = 'var(--secondary)';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
